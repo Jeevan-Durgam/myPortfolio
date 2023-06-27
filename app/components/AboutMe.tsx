@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const AboutMe = () => {
   const [visibleParagraphs, setVisibleParagraphs] = useState([0]);
-  const [showOverlay, setShowOverlay] = useState(true);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -24,7 +24,6 @@ const AboutMe = () => {
   const handleParagraphHover = (index: number) => {
     if (!visibleParagraphs.includes(index)) {
       setVisibleParagraphs([...visibleParagraphs, index]);
-      setShowOverlay(false);
     }
   };
 
@@ -37,7 +36,7 @@ const AboutMe = () => {
   }, []);
 
   const paragraphs = [
-    "Hello! I'm [Your Name], a passionate web developer with a strong foundation in HTML, CSS, and JavaScript. I specialize in building modern, responsive websites and web applications using the latest web technologies.",
+    "Hello! I'm Jeevan, a passionate web developer with a strong foundation in HTML, CSS, and JavaScript. I specialize in building modern, responsive websites and web applications using the latest web technologies.",
     " With expertise in front-end development, I have hands-on experience in frameworks like React and Next.js, enabling me to create interactive and dynamic user interfaces. I strive to deliver clean and efficient code while adhering to industry best practices and accessibility standards.",
     "In addition to my technical skills, I also have proficiency in design tools such as Canva and Figma, which allow me to create visually appealing layouts and graphics for a seamless user experience. I'm familiar with using Framer Motion for animations, bringing websites to life with engaging transitions and effects.",
     "As a well-rounded developer, I'm always eager to expand my skillset. I'm currently exploring the world of 3D design and animation using Blender, adding another dimension to my creative repertoire.",

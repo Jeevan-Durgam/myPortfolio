@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaDatabase } from "react-icons/fa";
+import { FaHtml5, FaCss3Alt, FaJs, FaReact } from "react-icons/fa";
 import { DiReact, DiCss3, DiNodejs, DiGit } from "react-icons/di";
 import { SiCanva, SiTailwindcss, SiBlender, SiFramer } from "react-icons/si";
 import { IoLogoFigma } from "react-icons/io5";
@@ -15,7 +15,6 @@ const Skills = () => {
     { name: "Next.js", icon: DiReact },
     { name: "Node.js", icon: DiNodejs },
     { name: "Git", icon: DiGit },
-    { name: "Database", icon: FaDatabase },
     { name: "Canva", icon: SiCanva },
     { name: "Figma", icon: IoLogoFigma },
     { name: "Blender", icon: SiBlender },

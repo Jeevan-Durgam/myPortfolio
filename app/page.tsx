@@ -9,7 +9,7 @@ import VideoLoader from "./components/VideoLoader";
 export default function Home() {
   return (
     <main className="">
-      <VideoLoader />
+      {/* <VideoLoader /> */}
       <Navbar />
       <Hero />
       <AboutMe />
