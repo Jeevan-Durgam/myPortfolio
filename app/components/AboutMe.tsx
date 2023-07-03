@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const AboutMe = () => {
   const [visibleParagraphs, setVisibleParagraphs] = useState([0]);
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(true);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -30,7 +30,7 @@ const AboutMe = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOverlay(false);
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -43,45 +43,49 @@ const AboutMe = () => {
     "I approach every project with a strong attention to detail, problem-solving mindset, and a commitment to delivering high-quality results. Whether it's building a responsive website, prototyping user interfaces, or crafting captivating animations, I'm dedicated to bringing ideas to life and exceeding client expectations.",
   ];
 
+  const handleOverlayComplete = () => {
+    setTimeout(() => {
+      setShowOverlay(false);
+    }, 2000);
+  };
+
   return (
-    <motion.div
-      className="max-w-2xl mx-auto py-8 px-4 relative"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <motion.h2 className="text-3xl font-bold mb-4" variants={textVariants}>
-        About Me
-      </motion.h2>
-      {paragraphs.map((paragraph, index) => (
-        <motion.p
-          key={index}
-          className="text-lg text-gray-700 leading-relaxed mt-4"
-          variants={textVariants}
-          animate={visibleParagraphs.includes(index) ? "visible" : "hidden"}
-          onMouseEnter={() => handleParagraphHover(index + 1)}
-        >
-          {paragraph}
-        </motion.p>
-      ))}
+    <div className="max-w-2xl md:max-w-3xl mx-auto md:p-0 relative">
       {showOverlay && (
         <motion.div
-          className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-70 text-white"
+          className="fixed top-0 left-0 w-screen h-screen bg-black/50 flex items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          onAnimationComplete={handleOverlayComplete}
         >
-          <motion.p
-            className="text-lg"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
-          >
-            Hover over the paragraph to see more
-          </motion.p>
+          <p className="text-white text-xl z-10">
+            Hover over the paragraphs to see more
+          </p>
         </motion.div>
       )}
-    </motion.div>
+      <motion.div
+        className="max-w-2xl md:max-w-3xl mx-auto p-10 relative"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h2 className="text-3xl font-bold mb-4" variants={textVariants}>
+          About Me
+        </motion.h2>
+        {paragraphs.map((paragraph, index) => (
+          <motion.p
+            key={index}
+            className="text-lg text-white/70 leading-relaxed mt-4 overflow-hidden"
+            variants={textVariants}
+            animate={visibleParagraphs.includes(index) ? "visible" : "hidden"}
+            onMouseEnter={() => handleParagraphHover(index + 1)}
+          >
+            {paragraph}
+          </motion.p>
+        ))}
+      </motion.div>
+    </div>
   );
 };
 

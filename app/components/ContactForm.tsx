@@ -41,8 +41,8 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto py-8 px-4">
-      <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+    <div className="max-w-2xl mx-auto my-16 py-8 px-4 h-screen">
+      <h2 className="text-2xl font-bold mb-4">Contact Me</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block">

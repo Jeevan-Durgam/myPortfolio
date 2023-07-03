@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { FaHtml5, FaCss3Alt, FaJs, FaReact } from "react-icons/fa";
 import { DiReact, DiCss3, DiNodejs, DiGit } from "react-icons/di";
@@ -22,41 +23,55 @@ const Skills = () => {
     { name: "Tailwind CSS", icon: SiTailwindcss },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { delay: 0.3, duration: 0.8 } },
-  };
-
-  const listItemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+  const animateSkills = () => ({
+    x: Math.random() * 2000 - 100,
+    y: Math.random() * 2000 - 100,
+    scale: Math.random() * 1.5 + 1,
+    rotate: Math.random() * 180 - 45,
+    transition: { duration: 0.5 },
+  });
 
   return (
-    <motion.div
-      className="max-w-2xl mx-auto py-8 px-4"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <h2 className="text-3xl font-bold mb-4">Skills</h2>
+    <div className="max-w-2xl mx-auto py-8 px-4 md:h-screen">
+      <h2 className="text-3xl font-bold mt-12">Skills</h2>
+      <p className="my-8 font-semibold">
+        These are the skills I excel at. I am driven to learn more and explore
+        the various frameworks and libraries that are available to create Web
+        applications that create good user experiences.
+      </p>
+      {/* <div className="">
+        <p className="my-4">
+          These are the skills I excel at. I have a strong foundation with HTML,
+          CSS and the concepts of basic, intermediate and advanced JavaScript.{" "}
+        </p>
+        <p className="my-4">
+          After learning the core concepts, I started experimenting with
+          frameworks and libraries and found comfort with react and its
+          ecosystem. I also learned NextJS as a serverless full-stack
+          alternative. For the styling, tailwindcss is my framework of choice
+          because of its utility first approach and the ability to custom create
+          themes and classes.
+        </p>
+        <p className="my-4">
+          I also have knowledge on creating good User Interfaces and fun User
+          Experience. Figma is the main tool i have in this section, because it
+          is the most used and well-received in the designer and developer
+          community.
+        </p>
+      </div> */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {skills.map((skill, index) => (
           <motion.div
             key={index}
             className="flex items-center justify-center rounded-lg p-4 shadow-md shadow-white"
-            variants={listItemVariants}
+            whileHover={animateSkills()}
           >
             <skill.icon className="w-8 h-8 mr-2" />
             <span className="text-lg">{skill.name}</span>
           </motion.div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
